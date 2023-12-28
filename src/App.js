@@ -1,22 +1,22 @@
-
+import React from 'react';
 import './App.css';
+
+
+
+import Header from './components/header/Header';
+import Nav from './components/nav/Nav';
+import Profile from './components/profile/Profile';
+
+
 
 const App = () => {
   return (
-    <div className="App">
-     <ul>
-      <li>
-        hjjjj
-      </li>
-     </ul>
-     <Header />
-    </div>
+    <div className="app-wrapper">
+   <Header/>
+   <Nav/>
+   <Profile/>
+     </div>
   );
-}
-const Header = () => {
-  return (
-    <div>kuk</div>
-  )
 }
 
 
