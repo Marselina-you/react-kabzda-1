@@ -1,7 +1,27 @@
 .item {
-    background-color: blue;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: inherit;
 }
 .item img {
-    width: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
+}
+.itemImg {
+    margin-right: 20px;
+}
+.post {
+    margin-right: 20px;
+    
+    font-size: 24px;
+    color: white;
+}
+.like {
+    border: 2px solid palevioletred;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 22px;
+    color: palevioletred;
 }

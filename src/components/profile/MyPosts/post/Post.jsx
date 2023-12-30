@@ -8,18 +8,18 @@ const Post = (props) => {
     
     return (
         <div>
-             <div className={classes.item}>
-             <img src={chef} alt='chef'/>
-         { props.message }
-        
-        
-        <div>
-        <span>{ props.likesCount }</span> 
-        </div>
-        
-         
-        
-        </div> 
+            <div className={classes.item}>
+                <div className={classes.itemImg}>
+                    <img src={chef} alt='chef'/>
+                </div>
+                
+                <div className={classes.post}>
+                        { props.message }
+                </div>
+                <div>
+                    <span className={classes.like}>{ props.likesCount }</span> 
+                </div>
+            </div> 
         </div>
     );
 };

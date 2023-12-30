@@ -1,11 +1,26 @@
 .nav {
+    font-family: Verdana, sans-serif;
     grid-area: n;
-    background-color:aquamarine;
+    background-color: #2b3241;
+   
+    padding: 20px;
+    font-size: 20px;
+    
     
   }
-  .item a{
+  .item {
+    text-transform: capitalize;
     color: white;
+    margin-bottom: 20px;
   }
-  .item.active {
-    background-color: orange;
+  .item a{
+   text-decoration: none;
+   transition: color .3s ease-in-out;
+  }
+  .item a:hover{
+    color: #2b3241;
+    
+   }
+  .active {
+    color: #b79d13;
   }
