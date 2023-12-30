@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
 import Dialogs from './components/dialogs/Dialogs';
 import Header from './components/header/Header';
@@ -11,7 +12,8 @@ import Settings from './components/settings/Settings';
 
 
 
-const App = () => {
+
+const App = (props) => {
   return (
     <BrowserRouter>
     <div className="app-wrapper">
@@ -21,11 +23,13 @@ const App = () => {
   <div className='app-wrapper-content'>
   {/** <Profile/>*/}
     <Routes>
-    <Route exact path='/dialogs' element={<Dialogs/> }/>
+    <Route exact path='/dialogs' element={<Dialogs valueDialog={props.dialog} valueMessage={props.message}/> }/>
     <Route path='/profile' element={<Profile/>}/>
     <Route path='/news' element={<News/>}/>
     <Route path='/music' element={<Music/>}/>
     <Route path='/settings' element={<Settings/>}/>
+
+  
     </Routes>
     
     </div>

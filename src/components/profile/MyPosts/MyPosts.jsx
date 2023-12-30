@@ -2,15 +2,11 @@ import React from 'react';
 import Post from './post/Post';
 import classes from './MyPosts.module.css'
 import Button from '../../button/Button';
+import posts from '../../../data.js';
+
 
 
 const MyPosts = () => {
-    let posts = [
-        {id: 1, message: 'Hoy, it is 1 post', likesCount: 12},
-        {id: 2, message: 'He, it is 2 post', likesCount: 12},
-        {id: 3, message: 'o', likesCount: 1},
-        {id: 4, message: 'o-hoh-ho', likesCount: 12}
-    ]
     let postsElement = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
     return (
         <div className={classes.postsBlock}>
