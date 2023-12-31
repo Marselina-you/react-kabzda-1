@@ -8,3 +8,7 @@
 .dialog a {
     text-decoration: none;
 }
+.dialog img{
+    width: 40px;
+    height: auto;
+}

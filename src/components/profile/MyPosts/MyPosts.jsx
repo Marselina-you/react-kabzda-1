@@ -2,12 +2,14 @@ import React from 'react';
 import Post from './post/Post';
 import classes from './MyPosts.module.css'
 import Button from '../../button/Button';
-import posts from '../../../data.js';
 
 
 
-const MyPosts = () => {
-    let postsElement = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+
+
+
+const MyPosts = (props) => {
+    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
     return (
         <div className={classes.postsBlock}>
             <h3>My Posts</h3>
@@ -17,8 +19,7 @@ const MyPosts = () => {
                 </div>
                <Button value="add post"/>
             </div>
-           
-         { postsElement }
+           { postsElement }
         </div>
     );
 };

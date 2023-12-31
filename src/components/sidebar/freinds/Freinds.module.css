@@ -1,0 +1,17 @@
+.block {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 20px;
+}
+.title {
+    color: gold;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.item {
+    color: white;
+    line-height: 160%;
+    padding-bottom: 20px;
+}
