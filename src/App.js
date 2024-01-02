@@ -14,18 +14,23 @@ import Sidebar from './components/sidebar/Sidebar';
 
 
 
+
+
 const App = (props) => {
   return (
     <BrowserRouter>
     <div className="app-wrapper">
    <Header/>
-   <Sidebar state={props.state.pageMessages}/>
+   <Sidebar />
   
   <div className='app-wrapper-content'>
-  {/** <Profile/>*/}
+  {/** <Profile/>state={props.store.state.pageMessages}pageMessages={props.store.pageMessages.newMessageText}*/}
     <Routes>
-    <Route exact path='/dialogs' element={<Dialogs state={props.state.pageMessages}/> }/>
-    <Route path='/profile' element={<Profile posts={props.state.posts}/>}/>
+    <Route exact path='/dialogs' element={<Dialogs  state={props.state.pageMessages} updateNewMessage={props.updateNewMessage} 
+    addMessage={props.addMessage} />} />
+    <Route path='/profile' element={<Profile state={props.state.profilePage} addPost={props.addPost} 
+    updateNewText={props.updateNewText}/>}/>
+   
     <Route path='/news' element={<News/>}/>
     <Route path='/music' element={<Music/>}/>
     <Route path='/settings' element={<Settings/>}/>

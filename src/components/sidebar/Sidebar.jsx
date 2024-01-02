@@ -10,7 +10,7 @@ const Sidebar = (props) => {
     return (
         <div className={s.block}>
          <Nav/>   
-         <Freinds state={props.state}/>
+         {/*<Freinds state={props.state}/>*/}
         </div>
     );
 };

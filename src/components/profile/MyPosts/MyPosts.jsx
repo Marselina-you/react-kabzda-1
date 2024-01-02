@@ -1,7 +1,8 @@
 import React from 'react';
 import Post from './post/Post';
-import classes from './MyPosts.module.css'
-import Button from '../../button/Button';
+import classes from './MyPosts.module.css';
+import cs from '../../button/Button.module.css';
+//import Button from '../../button/Button';
 
 
 
@@ -9,15 +10,28 @@ import Button from '../../button/Button';
 
 
 const MyPosts = (props) => {
-    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let newPostElement = React.createRef();
+    let addPost = () => {
+        
+        
+        props.addPost();
+        
+       
+    }
+    let postsElement = props.posts.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.updateNewText(text)
+    }
     return (
         <div className={classes.postsBlock}>
             <h3>My Posts</h3>
             <div className={classes.addPost}>
                 <div>
-                <textarea></textarea>
+                <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText} />
                 </div>
-               <Button value="add post"/>
+               {/*<Button value="add post"/>*/}
+               <button className={cs.btn} onClick={ addPost }>Add Post</button> 
             </div>
            { postsElement }
         </div>
