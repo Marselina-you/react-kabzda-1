@@ -25,7 +25,7 @@ let onMessageChange = (e) => {
   
 
   let dialogsElements = props.state.dialogs.map((dialog) => (
-    
+   
     <Dialog name={dialog.name} id={dialog.id} img={dialog.img}/>
     
   ));

@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 //import state, { subscribe } from './redux/state';
 //import  { addMessage, addPost, updateMessage, updateNewText } from './redux/state';
-import store from './redux/stateMy';
+import store from './redux/redux-store';
 
 
 
 //import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
  let rerenderEntireTree = (state) => {
+    
     root.render(
    
         <App state={state} dispatch={store.dispatch.bind(store)}  />
@@ -18,7 +19,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     );
 }
 rerenderEntireTree(store.getState());
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => {
+    let state = store.getState()
+    rerenderEntireTree(state);
+
+});
 
   
 
