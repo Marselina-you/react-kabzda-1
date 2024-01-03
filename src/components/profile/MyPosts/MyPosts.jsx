@@ -3,7 +3,7 @@ import Post from './post/Post';
 import classes from './MyPosts.module.css';
 
 import Button from '../../button/Button';
-import { addPostActionCreator, updatePostActionCreator } from '../../../redux/profileReducer';
+//import { addPostActionCreator, updatePostActionCreator } from '../../../redux/profileReducer';
 
 
 
@@ -12,15 +12,17 @@ import { addPostActionCreator, updatePostActionCreator } from '../../../redux/pr
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let onAddPost = () => {
+        
+        props.addPost();
+        
         }
     let onPostChange = () => {
             let text = newPostElement.current.value;
-            let action = updatePostActionCreator(text);
-            props.dispatch(action);
+            props.updateNewPostText(text)
     }
-    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    
     
     return (
         <div className={classes.postsBlock}>
@@ -31,7 +33,7 @@ const MyPosts = (props) => {
                 </div>
                {/*<Button value="add post"/>*/}
               
-               <Button  addMessage={addPost} value="add message"/>
+               <Button  addMessage={onAddPost} value="add post"/>
             </div>
            { postsElement }
         </div>

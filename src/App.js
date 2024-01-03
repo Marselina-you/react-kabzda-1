@@ -1,11 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import './App.css';
-import Dialogs from './components/dialogs/Dialogs';
+import DialogsContainer from './components/dialogs/DialogsContainer';
 import Header from './components/header/Header';
 import Music from './components/music/Music';
-
 import News from './components/news/News';
 import Profile from './components/profile/Profile';
 import Settings from './components/settings/Settings';
@@ -27,8 +25,8 @@ const App = (props) => {
   <div className='app-wrapper-content'>
   {/** <Profile/>state={props.store.state.pageMessages}pageMessages={props.store.pageMessages.newMessageText}*/}
     <Routes>
-    <Route exact path='/dialogs' element={<Dialogs dispatch={props.dispatch}  state={props.state.pageMessages} />} />
-    <Route path='/profile' element={<Profile dispatch={props.dispatch} state={props.state.profilePage} />}/>
+    <Route exact path='/dialogs' element={<DialogsContainer store={props.store} />} />
+    <Route path='/profile' element={<Profile store={props.store} />}/>
    
     <Route path='/news' element={<News/>}/>
     <Route path='/music' element={<Music/>}/>
