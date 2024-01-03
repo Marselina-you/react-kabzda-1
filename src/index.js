@@ -5,6 +5,7 @@ import App from './App';
 //import state, { subscribe } from './redux/state';
 //import  { addMessage, addPost, updateMessage, updateNewText } from './redux/state';
 import store from './redux/redux-store';
+import StoreContext, { Provider } from './StoreContext';
 
 
 
@@ -13,8 +14,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
  let rerenderEntireTree = (state) => {
     
     root.render(
-   
-        <App state={state} store={store} dispatch={store.dispatch.bind(store)}  />
+   <Provider store={store}>
+ <App  />
+   </Provider>
+       
       
     );
 }
