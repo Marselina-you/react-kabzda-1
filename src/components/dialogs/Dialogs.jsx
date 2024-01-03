@@ -11,13 +11,14 @@ import { addMessageActionCreator, updateMessageActionCreator } from "../../redux
 
 
 const Dialogs = (props) => {
-  let newMessageElement = React.createRef();
+  //let newMessageElement = React.createRef();
 
 let addMessage = () => {
     props.dispatch(addMessageActionCreator());
 }
-let onMessageChange = () => {
-  let text = newMessageElement.current.value;
+let onMessageChange = (e) => {
+  
+  let text =  e.target.value;
   let action = updateMessageActionCreator(text);
   props.dispatch(action);
 }
@@ -40,7 +41,7 @@ let onMessageChange = () => {
         <div className={classes.messages}>{messagesElements}</div>
       </div>
       
-      <textarea ref={newMessageElement} onChange={onMessageChange} value={props.state.newMessageText} />
+      <textarea  onChange={onMessageChange} value={props.state.newMessageText} />
     
      <Button  addMessage={addMessage} value="add"/>
     </div>
