@@ -3,7 +3,7 @@ import Dialog from "./dialog/Dialog";
 import Message from "./message/Message";
 import classes from "./Dialogs.module.css";
 import Button from '../button/Button';
-import { addMessageActionCreator, updateMessageActionCreator } from "../../redux/stateMy";
+import { addMessageActionCreator, updateMessageActionCreator } from "../../redux/dialogsReducer";
 
 
 

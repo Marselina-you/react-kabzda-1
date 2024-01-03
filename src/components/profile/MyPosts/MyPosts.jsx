@@ -3,7 +3,7 @@ import Post from './post/Post';
 import classes from './MyPosts.module.css';
 
 import Button from '../../button/Button';
-import { addPostActionCreator, updatePostActionCreator } from '../../../redux/stateMy';
+import { addPostActionCreator, updatePostActionCreator } from '../../../redux/profileReducer';
 
 
 
