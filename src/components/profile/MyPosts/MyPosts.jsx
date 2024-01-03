@@ -1,8 +1,9 @@
 import React from 'react';
 import Post from './post/Post';
 import classes from './MyPosts.module.css';
-import cs from '../../button/Button.module.css';
-//import Button from '../../button/Button';
+
+import Button from '../../button/Button';
+import { addPostActionCreator, updatePostActionCreator } from '../../../redux/stateMy';
 
 
 
@@ -12,17 +13,15 @@ import cs from '../../button/Button.module.css';
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
     let addPost = () => {
-        
-        
-        props.addPost();
-        
-       
-    }
-    let postsElement = props.posts.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+        props.dispatch(addPostActionCreator());
+        }
     let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewText(text)
+            let text = newPostElement.current.value;
+            let action = updatePostActionCreator(text);
+            props.dispatch(action);
     }
+    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    
     return (
         <div className={classes.postsBlock}>
             <h3>My Posts</h3>
@@ -31,7 +30,8 @@ const MyPosts = (props) => {
                 <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText} />
                 </div>
                {/*<Button value="add post"/>*/}
-               <button className={cs.btn} onClick={ addPost }>Add Post</button> 
+              
+               <Button  addMessage={addPost} value="add message"/>
             </div>
            { postsElement }
         </div>

@@ -3,6 +3,8 @@ import Dialog from "./dialog/Dialog";
 import Message from "./message/Message";
 import classes from "./Dialogs.module.css";
 import Button from '../button/Button';
+import { addMessageActionCreator, updateMessageActionCreator } from "../../redux/stateMy";
+
 
 
 
@@ -10,11 +12,14 @@ import Button from '../button/Button';
 
 const Dialogs = (props) => {
   let newMessageElement = React.createRef();
-  let addMessage = () => {
-    
-    props.addMessage();
 
-
+let addMessage = () => {
+    props.dispatch(addMessageActionCreator());
+}
+let onMessageChange = () => {
+  let text = newMessageElement.current.value;
+  let action = updateMessageActionCreator(text);
+  props.dispatch(action);
 }
   
 
@@ -26,10 +31,7 @@ const Dialogs = (props) => {
   let messagesElements = props.state.messages.map((message) => (
     <Message content={message.content} id={message.id} />
   ));
-  let onMessageChange = () => {
-    let text = newMessageElement.current.value;
-    props.updateNewMessage(text)
-}
+  
   return (
     <div>
       <div className={classes.dialogs}>
