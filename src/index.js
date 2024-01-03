@@ -5,7 +5,8 @@ import App from './App';
 //import state, { subscribe } from './redux/state';
 //import  { addMessage, addPost, updateMessage, updateNewText } from './redux/state';
 import store from './redux/redux-store';
-import StoreContext, { Provider } from './StoreContext';
+import { Provider } from 'react-redux';
+
 
 
 
