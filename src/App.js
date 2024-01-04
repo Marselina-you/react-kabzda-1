@@ -9,6 +9,8 @@ import Profile from './components/profile/Profile';
 import Settings from './components/settings/Settings';
 import Sidebar from './components/sidebar/Sidebar';
 
+import UsersContainer from './components/users/UsersContainer';
+
 
 
 
@@ -27,7 +29,7 @@ const App = (props) => {
     <Routes>
     <Route exact path='/dialogs' element={<DialogsContainer />} />
     <Route path='/profile' element={<Profile />}/>
-   
+    <Route path='/users' element={<UsersContainer />}/>
     <Route path='/news' element={<News/>}/>
     <Route path='/music' element={<Music/>}/>
     <Route path='/settings' element={<Settings/>}/>
