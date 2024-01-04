@@ -55,20 +55,40 @@ newMessageText: "It's my first message!"
 
 
 const dialogsReducer = (state = initialState, action) => {
-   
-
-    switch(action.type) {
-        case ADD_MESSAGE:
+   //let stateCopy;
+        switch(action.type) {
+        case ADD_MESSAGE: {
+            
             let newMessage = {
-                id: 7,
+                id: state.messages.length+1,
                 content: state.newMessageText,
             }
-            state.messages.push(newMessage);
-            state.newMessageText = '';
-            return state;
-        case UPDATE_MESSAGE:
-                state.newMessageText = action.newText;
-                return state;
+
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [...state.messages, newMessage],
+            }
+           
+            
+            
+            //stateCopy.messages = [...state.messages]
+            //stateCopy.messages.push(newMessage);
+            //stateCopy.newMessageText = '';
+            
+        }
+            
+        case UPDATE_MESSAGE: {
+            return {
+                ...state,
+                newMessageText: action.newText
+                
+            }
+            //stateCopy.newMessageText = action.newText;
+           
+            //return stateCopy;
+        }
+               
         default: 
             return state;
     }

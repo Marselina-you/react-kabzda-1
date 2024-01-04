@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 
 //import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
- let rerenderEntireTree = (state) => {
+ 
     
     root.render(
    <Provider store={store}>
@@ -21,13 +21,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
        
       
     );
-}
-rerenderEntireTree(store.getState());
-store.subscribe(() => {
-    let state = store.getState()
-    rerenderEntireTree(state);
 
-});
+//ServiceWorker.unregister();
 
   
 

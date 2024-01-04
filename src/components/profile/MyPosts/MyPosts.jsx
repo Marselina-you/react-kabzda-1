@@ -12,7 +12,7 @@ import Button from '../../button/Button';
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
-    let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let postsElement = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
     let onAddPost = () => {
         
         props.addPost();

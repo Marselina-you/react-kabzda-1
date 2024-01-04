@@ -13,8 +13,8 @@ let onMessageChange = (e) => {
   let text =  e.target.value;
   props.messageChangeText(text)
 }
-  let dialogsElements = props.dialogs.map((dialog) => (<Dialog name={dialog.name} id={dialog.id} img={dialog.img}/>));
-  let messagesElements = props.messages.map((message) => (<Message content={message.content} id={message.id} />));
+  let dialogsElements = props.dialogs.map((dialog) => (<Dialog key={dialog.id} name={dialog.name} img={dialog.img}/>));
+  let messagesElements = props.messages.map((message) => (<Message key={message.id} content={message.content}  />));
   
   return (
     <div>

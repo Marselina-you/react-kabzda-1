@@ -104,9 +104,8 @@ let store = {
     dispatch(action) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.pageMessages = dialogsReducer(this._state.pageMessages, action)
-
-        this._rerenderEntireTree(this._state)
+        this._state.pageMessages = dialogsReducer(this._state.pageMessages, action);
+        this._rerenderEntireTree(this._state);
        
     },
     
