@@ -2,3 +2,10 @@
     width: 150px;
     border-radius: 100%;
 }
+.selectedPage {
+    font-weight: bold;
+
+}
+.page span {
+    cursor: pointer;
+}
