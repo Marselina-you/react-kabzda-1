@@ -6,29 +6,21 @@ import s from './Users.module.css';
 import user from "../../assets/images/user.jpg";
 
 const Users = (props) => {
-   if (props.users.length === 0) {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users").then(responce => {
+  let getUsers = () => {
+    if (props.users.length === 0) {
+      axios.get("https://social-network.samuraijs.com/api/1.0/users").then(responce => {
+       
+        props.setUsers(responce.data.items);
+        
+      });
      
-      props.setUsers(responce.data.items);
-      
-    });
-    /*props.setUsers([
-        {id: 1, followed: true, photoUrl: 'https://avatars.mds.yandex.net/i?id=329d6c88647606afb886ceb33b34c8379fe6ba0a-10727636-images-thumbs&n=13', fullName: 'Dmitro', status: 'I am Boss', location: {
-              city: 'Minsk',
-              country: 'Belarus'
-          }},
-          {id: 2, followed: true, photoUrl: 'https://avatars.mds.yandex.net/i?id=329d6c88647606afb886ceb33b34c8379fe6ba0a-10727636-images-thumbs&n=13', fullName: 'Dana', status: 'I am  not Boss', location: {
-              city: 'Murmansk',
-              country: 'Russia'
-          }},
-          {id: 3, followed: false, photoUrl: 'https://avatars.mds.yandex.net/i?id=329d6c88647606afb886ceb33b34c8379fe6ba0a-10727636-images-thumbs&n=13', fullName: 'Don', status: 'I am Boss too', location: {
-              city: 'Moskow',
-              country: 'Russia'
-          }}
-      ])*/
-    }
+      }
+  }
+  
   return (
+    
     <div>
+      <button onClick={getUsers}>get users</button>
       {props.users.map((u) => (
         <div key={u.id}>
           <span>
@@ -71,3 +63,17 @@ const Users = (props) => {
 };
 
 export default Users;
+ /*props.setUsers([
+          {id: 1, followed: true, photoUrl: 'https://avatars.mds.yandex.net/i?id=329d6c88647606afb886ceb33b34c8379fe6ba0a-10727636-images-thumbs&n=13', fullName: 'Dmitro', status: 'I am Boss', location: {
+                city: 'Minsk',
+                country: 'Belarus'
+            }},
+            {id: 2, followed: true, photoUrl: 'https://avatars.mds.yandex.net/i?id=329d6c88647606afb886ceb33b34c8379fe6ba0a-10727636-images-thumbs&n=13', fullName: 'Dana', status: 'I am  not Boss', location: {
+                city: 'Murmansk',
+                country: 'Russia'
+            }},
+            {id: 3, followed: false, photoUrl: 'https://avatars.mds.yandex.net/i?id=329d6c88647606afb886ceb33b34c8379fe6ba0a-10727636-images-thumbs&n=13', fullName: 'Don', status: 'I am Boss too', location: {
+                city: 'Moskow',
+                country: 'Russia'
+            }}
+        ])*/
