@@ -1,60 +1,37 @@
-import axios from "axios";
-//import * as axios from "axios";
-import React from "react";
+import React from 'react';
+import Button from '../button/Button';
 import s from './Users.module.css';
-import Button from "../button/Button";
 import user from "../../assets/images/user.jpg";
 
-
-class Users extends React.Component {
-
-
-componentDidMount() {
-  axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(responce => {
-    this.props.setUsers(responce.data.items);
-    this.props.setTotalUsersCount(responce.data.totalCount);
-   
-        
-      });
-}
-onPageChanged = (pageNumber) => {
-  this.props.setCurrentPage(pageNumber);
-  axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(responce => {
-    this.props.setUsers(responce.data.items);
-   
-        
-      })
-}
-render() {
-  let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize / 100);
+const Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize / 100);
   
   let pages = [];
   for (let i=1; i<= pagesCount; i++) {
     pages.push(i);
   }
 
-      return <div>
+    return (
+        <div>
         <div className={s.page}>
 {pages.map( p => {
-  return <span className={this.props.currentPage === p && s.selectedPage }
-  onClick={(e) => {this.onPageChanged(p)}}>{p}</span>
+  return <span key={p} className={props.currentPage === p && s.selectedPage }
+  onClick={(e) => {props.onPageChanged(p)}}>{p}</span>
 })}
 </div>
       
-      {this.props.users.map((u) => (
+      {props.users.map((u) => (
         <div key={u.id}>
           <span>
             <div className={s.img}>
               <img src={ u.photos.small != null ? u.photos.smal : user} alt="" />
             </div>
             <div>
-               
-              
-              {u.followed 
+            {u.followed 
               ? 
-              <Button addMessage={() => {this.props.unfollow(u.id)}} value="unfollow"/>
+              <Button addMessage={() => {props.unfollow(u.id)}} value="unfollow"/>
               : 
-              <Button addMessage={() => {this.props.follow(u.id)}} value="follow"/>
+              <Button addMessage={() => {props.follow(u.id)}} value="follow"/>
              }
             </div>
           </span>
@@ -79,9 +56,9 @@ render() {
         </div>
       ))}
     </div>
-    }
+    );
+};
 
-}
+
 
 export default Users;
- 
