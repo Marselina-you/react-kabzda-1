@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { followAC, setCurrentPageAC, setIsFetchingAC, setUsersAC, setUsersTotalCountAC, unfollowAC } from '../../redux/usersReducer';
+import { follow, setCurrentPage, setIsFetching, setUsers, setUsersTotalCount, unfollow } from '../../redux/usersReducer';
 import Users from './Users';
 
 import Preloader from '../common/preloader/Preloader';
@@ -60,7 +60,7 @@ return {
     isFetching: state.usersPage.isFetching,
 }
 }
-let mapDispatchProps = (dispatch) => {
+/*let mapDispatchProps = (dispatch) => {
     return {
         follow: (userId) => {
             dispatch(followAC(userId))
@@ -81,9 +81,12 @@ let mapDispatchProps = (dispatch) => {
             dispatch(setIsFetchingAC(isFetching))
         }
     }
-}
+}*/
 
 
 
 
-export default connect(mapStateToProps, mapDispatchProps) (UsersContainer);
+export default connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, setIsFetching
+
+}) (UsersContainer);
+
