@@ -11,7 +11,7 @@ let reducers = combineReducers({
 
 let store = legacy_createStore(reducers);//отдали редюсеры store
 
-window.store = store
+window.store = store;
 
 export default store;
 

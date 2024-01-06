@@ -5,10 +5,9 @@ import DialogsContainer from './components/dialogs/DialogsContainer';
 import Header from './components/header/Header';
 import Music from './components/music/Music';
 import News from './components/news/News';
-import Profile from './components/profile/Profile';
+import ProfileContainer from './components/profile/ProfileContainer';
 import Settings from './components/settings/Settings';
 import Sidebar from './components/sidebar/Sidebar';
-
 import UsersContainer from './components/users/UsersContainer';
 
 
@@ -28,7 +27,7 @@ const App = (props) => {
   {/** <Profile/>state={props.store.state.pageMessages}pageMessages={props.store.pageMessages.newMessageText}*/}
     <Routes>
     <Route exact path='/dialogs' element={<DialogsContainer />} />
-    <Route path='/profile' element={<Profile />}/>
+    <Route path='/profile' element={<ProfileContainer />}/>
     <Route path='/users' element={<UsersContainer />}/>
     <Route path='/news' element={<News/>}/>
     <Route path='/music' element={<Music/>}/>
