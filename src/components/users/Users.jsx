@@ -25,7 +25,7 @@ const Users = (props) => {
         <div key={u.id}>
           <span>
             <div className={s.img}>
-              <NavLink to={'/profile/' + 'u.id'}>
+              <NavLink to={`/profile/${u.id}`}>
               <img src={ u.photos.small != null ? u.photos.smal : user} alt="" />
               </NavLink>
              
