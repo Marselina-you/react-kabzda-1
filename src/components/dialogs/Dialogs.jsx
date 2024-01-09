@@ -16,7 +16,7 @@ let onMessageChange = (e) => {
 }
   let dialogsElements = props.dialogs.map((dialog) => (<Dialog key={dialog.id} name={dialog.name} img={dialog.img}/>));
   let messagesElements = props.messages.map((message) => (<Message key={message.id} content={message.content}  />));
- if (props.isAuth == false) return <Navigate to={'/login'}/>
+ 
   return (
     <div>
       <div className={classes.dialogs}>
