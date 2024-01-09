@@ -11,8 +11,8 @@ class UsersContainer extends React.Component {
 
 
     componentDidMount() {
+       
         this.props.setIsFetching(true);
-
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
         this.props.setIsFetching(false);
         this.props.setUsers(data.items);
@@ -31,7 +31,8 @@ class UsersContainer extends React.Component {
       
           return <>
           {this.props.isFetching ? <Preloader/> : null }
-          <Users totalUsersCount={this.props.totalUsersCount}
+          <Users 
+          totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
@@ -61,6 +62,11 @@ return {
     followInProgress: state.usersPage.followInProgress,
 }
 }
+
+export default connect(mapStateToProps, {toggleFollowingProgress, follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount,  setIsFetching
+
+}) (UsersContainer);
+
 /*let mapDispatchProps = (dispatch) => {
     return {
         follow: (userId) => {
@@ -83,11 +89,3 @@ return {
         }
     }
 }*/
-
-
-
-
-export default connect(mapStateToProps, {toggleFollowingProgress, follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount,  setIsFetching
-
-}) (UsersContainer);
-
