@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, setCurrentPage, setIsFetching, setUsers, setTotalUsersCount, unfollow, toggleFollowingProgress } from '../../redux/usersReducer';
+import { follow, setCurrentPage, unfollow,  getUsers } from '../../redux/usersReducer';
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader';
-import { usersAPI } from '../../api/api';
+
 
 
 
@@ -12,20 +12,22 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
        
-        this.props.setIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-       });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        //this.props.setIsFetching(true);
+        //usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+       // this.props.setIsFetching(false);
+        //this.props.setUsers(data.items);
+        //this.props.setTotalUsersCount(data.totalCount);
+       //});
     }
     onPageChanged = (pageNumber) => {
-        this.props.setIsFetching(true)
-      this.props.setCurrentPage(pageNumber);
-      usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-        this.props.setIsFetching(false)
-        this.props.setUsers(data.items);
-       })
+        this.props.getUsers(pageNumber, this.props.pageSize);
+        //this.props.setIsFetching(true)
+      //this.props.setCurrentPage(pageNumber);
+      //usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+        //this.props.setIsFetching(false)
+        //this.props.setUsers(data.items);
+       //})
     }
     render() {
       
@@ -63,8 +65,8 @@ return {
 }
 }
 
-export default connect(mapStateToProps, {toggleFollowingProgress, follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount,  setIsFetching
-
+export default connect(mapStateToProps, {follow, unfollow,
+     setCurrentPage, getUsers: getUsers
 }) (UsersContainer);
 
 /*let mapDispatchProps = (dispatch) => {

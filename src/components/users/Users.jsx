@@ -4,7 +4,6 @@ import s from './Users.module.css';
 import user from "../../assets/images/user.jpg";
 import { NavLink } from 'react-router-dom';
 
-import { followAPI, unfollowAPI } from '../../api/api';
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize / 100);
@@ -30,35 +29,15 @@ const Users = (props) => {
               <NavLink to={`/profile/${u.id}`}>
               <img src={ u.photos.small != null ? u.photos.smal : user} alt="" />
               </NavLink>
-             
-            </div>
-            
+             </div>
             <div>
             {u.followed 
               ? 
               <Button disabled={props.followInProgress.some(id => id === u.id)} addMessage={() => {
-               //debugger;
-                props.toggleFollowingProgress(true, u.id)
-                unfollowAPI.getUsers(u.id).then(data => {
-                  if (data.resultCode === 0) {
-                    props.unfollow(u.id)
-                  }
-                  props.toggleFollowingProgress(false, u.id)
-                })
-               }} value="unfollow"/>
+               props.unfollow(u.id)}} value="unfollow"/>
               : 
               <Button disabled={props.followInProgress.some(id => id === u.id)} addMessage={() => {
-                props.toggleFollowingProgress(true, u.id)
-                followAPI.getUsers(u.id).then(data => {
-                  if (data.resultCode === 0) {
-                    props.follow(u.id)
-                  }
-                  props.toggleFollowingProgress(false, u.id)
-                })
-               
-                
-              
-              }} value="follow"/>
+                props.follow(u.id)}} value="follow"/>
              }
             </div>
           </span>
