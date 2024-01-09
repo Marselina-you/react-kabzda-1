@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { follow, setCurrentPage, unfollow,  getUsers } from '../../redux/usersReducer';
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 
 
@@ -65,29 +67,8 @@ return {
 }
 }
 
-export default connect(mapStateToProps, {follow, unfollow,
-     setCurrentPage, getUsers: getUsers
-}) (UsersContainer);
 
-/*let mapDispatchProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setUsersTotalCountAC(totalCount))
-        },
-        setIsFetching: (isFetching) => {
-            dispatch(setIsFetchingAC(isFetching))
-        }
-    }
-}*/
+export default compose(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers: getUsers}),
+    //withAuthRedirect
+)(UsersContainer)
