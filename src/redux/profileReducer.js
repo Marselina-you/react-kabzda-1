@@ -33,7 +33,7 @@ let initialState = {
 ],
     newPostText: 'it-kamasutra',
     profile: null,
-    status: ""
+    status: "1"
 
 }
 

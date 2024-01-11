@@ -2,6 +2,8 @@ import React from 'react';
 //import classes from './ProfileInfo.module.css';
 
 class ProfileStatus extends React.Component  {
+
+   
     state = {
         editMode: false,
         status: this.props.status
@@ -26,6 +28,15 @@ onStatusChange = (e) => {
     });
     
 }
+componentDidUpdate(prevProps, prevState) {
+   if(prevProps.status !== this.props.status) {
+    this.setState({
+        status: this.props.status
+       })
+   } 
+   
+    
+}
     render() {
         return (
             <div>
@@ -35,7 +46,7 @@ onStatusChange = (e) => {
                 </div>}
             {this.state.editMode &&
                 <div>
-                <input onChange={this.onStatusChange} autoFocus='true' onBlur={this.deactivateEditMode} value={this.state.status}/>
+                <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}/>
                 </div>}
             
         </div>

@@ -28,12 +28,12 @@ class ProfileContainer extends React.Component {
       //debugger;
       let profileId = this.props.router.params.userId;
       if (!profileId) {
-        profileId = 2;
+        profileId = 30603;
     }
       this.props.getProfileUsers(profileId);
-      setTimeout(() => {
+
         this.props.getStatus(profileId);
-      }, 5000)
+ 
       
     }
     render() {
