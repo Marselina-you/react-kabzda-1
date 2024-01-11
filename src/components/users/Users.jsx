@@ -68,14 +68,3 @@ const Users = (props) => {
 
 
 export default Users;
-/*axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,  {
-                  withCredentials: true,
-                  headers: {
-                    "API-KEY": "0d22077a-fb97-4dd0-9851-e99421b7879d"
-                  }
-                }).then(responce => {
-                  if (responce.data.resultCode === 0) {
-                    props.unfollow(u.id)
-                  }
-                 
-                  });*/

@@ -1,8 +1,9 @@
-import { usersAPI } from "../api/api";
+import { profileAPI, usersAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_TEXT = 'UPDATE-NEW-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS'
 let initialState = {
     posts: [{
         id: 1,
@@ -31,7 +32,8 @@ let initialState = {
     }
 ],
     newPostText: 'it-kamasutra',
-    profile: null
+    profile: null,
+    status: ""
 
 }
 
@@ -62,25 +64,41 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+        case SET_STATUS: {
+            return {...state, status: action.status}
+        }
         default: 
             return state;
     }
 }
 export const addPostActionCreator = () => ({type: ADD_POST})
-export const updatePostActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_TEXT, newText: text
-    }
-}
+export const updatePostActionCreator = (text) => ({type: UPDATE_NEW_TEXT, newText: text})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile })
+export const setStatus = (status) => ({type: SET_STATUS, status})//action creator
 
-
+export const getStatus = (profileId) => (dispatch) => {
+    profileAPI.getStatus(profileId)
+    .then(response => {
+        //debugger;
+        dispatch(setStatus(response.data))
+    })
+}  
+export const updateStatus = (status) => (dispatch) => {
+    profileAPI.getStatus(status)
+    .then(response => {
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(response.data))//передаем в  dispatch экшен
+        }
+        
+    })
+} 
 export const getProfileUsers = (profileId) => {//getUsersThunkCreator
     return (dispatch) => {
         usersAPI.getProfileUsers(profileId)
-        .then(responce => {
-            dispatch(setUserProfile(responce.data))
+        .then(response => {
+            dispatch(setUserProfile(response.data))
         });
     }
-}  
+}
+
 export default profileReducer;

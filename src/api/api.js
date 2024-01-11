@@ -15,7 +15,7 @@ export const usersAPI = {
        });
      },
      getProfileUsers(profileId) {
-        return  instance.get(`/profile/` + profileId);
+        return profileAPI.getProfileUsers(profileId)
        
      },
      follow(userId) {
@@ -25,6 +25,19 @@ export const usersAPI = {
         return instance.delete(`follow/${userId}`)
      }
    
+}
+export const profileAPI = {
+    getProfileUsers(profileId) {
+        return  instance.get(`profile/` + profileId);
+       
+     },
+     getStatus(profileId) {
+        return instance.get(`profile/status/` + profileId)
+     },
+     updateStatus(status) {
+        //debugger;
+        return instance.put(`profile/status`, {status: status});
+     }
 }
 export const authAPI = {
     me()  { 
