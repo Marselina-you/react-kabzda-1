@@ -1,0 +1,20 @@
+.formControl.error input,
+.formControl.error textarea {
+border: solid red 1px;
+}
+
+.formControl textarea{
+        font-size: 30px;
+       
+}
+.formControl.error span{
+    color: red;
+   
+}
+.inputMy {
+    padding-bottom: 20px;
+}
+.inputMy input{
+    font-size: 30px;
+}
+
