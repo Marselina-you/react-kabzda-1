@@ -17,4 +17,9 @@ border: solid red 1px;
 .inputMy input{
     font-size: 30px;
 }
+.formSummaryError {
+    padding: 6px;
+    color: red;
+    border: 1px solid aqua;
+}
 
