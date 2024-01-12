@@ -2,18 +2,17 @@ import React from "react";
 import Dialog from "./dialog/Dialog";
 import Message from "./message/Message";
 import classes from "./Dialogs.module.css";
-import Button from '../button/Button';
-import { Navigate } from "react-router-dom";
+
+import AddMessageForm from "./AddMessageForm";
+import { reduxForm } from "redux-form";
+
 
 const Dialogs = (props) => {
-  
-  let addMessage = () => {
-    props.addMessage();
+  const addNewMessage = (values) => {
+    console.log(values.newMessageBody)
+    props.addNewMessageFrom(values.newMessageBody)//addNewMessage from dialogsContainer
   }
-let onMessageChange = (e) => {
-  let text =  e.target.value;
-  props.messageChangeText(text)
-}
+
   let dialogsElements = props.dialogs.map((dialog) => (<Dialog key={dialog.id} name={dialog.name} img={dialog.img}/>));
   let messagesElements = props.messages.map((message) => (<Message key={message.id} content={message.content}  />));
  
@@ -23,10 +22,10 @@ let onMessageChange = (e) => {
         <div className={classes.dialogsItems}>{dialogsElements}</div>
         <div className={classes.messages}>{messagesElements}</div>
       </div>
-      <textarea  onChange={onMessageChange} value={props.newMessageText} />
-      <Button  addMessage={addMessage} value="add"/>
+      <AddMessageReduxForm onSubmit={addNewMessage}/>
     </div>
   );
 };
+const AddMessageReduxForm = reduxForm({form: 'addMessage'})(AddMessageForm)
 
 export default Dialogs;
