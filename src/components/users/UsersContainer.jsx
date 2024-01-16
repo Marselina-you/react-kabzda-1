@@ -16,21 +16,11 @@ class UsersContainer extends React.Component {
     componentDidMount() {
        
         this.props.requestUsers(this.props.currentPage, this.props.pageSize);
-        //this.props.setIsFetching(true);
-        //usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-       // this.props.setIsFetching(false);
-        //this.props.setUsers(data.items);
-        //this.props.setTotalUsersCount(data.totalCount);
-       //});
+    
     }
     onPageChanged = (pageNumber) => {
         this.props.requestUsers(pageNumber, this.props.pageSize);
-        //this.props.setIsFetching(true)
-      //this.props.setCurrentPage(pageNumber);
-      //usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-        //this.props.setIsFetching(false)
-        //this.props.setUsers(data.items);
-       //})
+       
     }
     render() {
       
