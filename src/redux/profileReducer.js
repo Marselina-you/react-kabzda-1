@@ -87,7 +87,7 @@ export const updateStatus = (status) => (dispatch) => {
 } 
 export const getProfileUsers = (profileId) => {//getUsersThunkCreator
     return (dispatch) => {
-        usersAPI.getProfileUsers(profileId)
+        profileAPI.getProfileUsers(profileId)
         .then(response => {
             dispatch(setUserProfile(response.data))
         });
