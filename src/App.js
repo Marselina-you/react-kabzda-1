@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Preloader from './components/common/preloader/Preloader';
@@ -13,9 +13,7 @@ import Settings from './components/settings/Settings';
 import Sidebar from './components/sidebar/Sidebar';
 import UsersContainer from './components/users/UsersContainer';
 import { initializeApp } from './redux/appReducer';
-
-
-
+import store from './redux/redux-store';
 
 
 
@@ -32,6 +30,7 @@ class App extends Component {
     
     return (
       <BrowserRouter>
+    
       <div className="app-wrapper">
      <HeaderContainer />
      <Sidebar />
@@ -50,6 +49,7 @@ class App extends Component {
   </Routes>
       </div>
      </div>
+    
       </BrowserRouter>
     );
   }
