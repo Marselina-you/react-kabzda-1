@@ -3,29 +3,49 @@ import Post from './post/Post';
 import classes from './MyPosts.module.css';
 import AddPostForm from './AddPostForm';
 import { reduxForm } from 'redux-form';
-//import { addPostActionCreator, updatePostActionCreator } from '../../../redux/profileReducer';
+//import { Component } from 'react';
+//import { PureComponent } from 'react';
 
 
-
-
-
-
-const MyPosts = (props) => {
-  
-    const addPost = (values) => {
-        props.addPost(values.newPostText)//addPost from mypostscontainer
-    }
-   
-    let postsElement = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
+const MyPosts = React.memo(props => {
+    console.log("render")
+        const addPost = (values) => {
+           props.addPost(values.newPostText)//addPost from mypostscontainer
+        }
+       
+        let postsElement = props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
+        
+    return (
+            <div className={classes.postsBlock}>
+                <h3>My Posts</h3>
+               <AddPostReduxForm onSubmit={addPost}/>
+               { postsElement }
+            </div>
+        );
     
-return (
-        <div className={classes.postsBlock}>
-            <h3>My Posts</h3>
-           <AddPostReduxForm onSubmit={addPost}/>
-           { postsElement }
-        </div>
-    );
-};
+ }) 
+// //
+//     // shouldComponentUpdate(nextProps, nextState) {
+//     //     return nextProps !== this.props || nextState !== this.state;
+//     // }
+//   render() {
+//     console.log("render")
+//     const addPost = (values) => {
+//         this.props.addPost(values.newPostText)//addPost from mypostscontainer
+//     }
+   
+//     let postsElement = this.props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
+    
+// return (
+//         <div className={classes.postsBlock}>
+//             <h3>My Posts</h3>
+//            <AddPostReduxForm onSubmit={addPost}/>
+//            { postsElement }
+//         </div>
+//     );
+//   }
+
+// };
 
 const AddPostReduxForm = reduxForm({form: 'addForm'})(AddPostForm)
 
