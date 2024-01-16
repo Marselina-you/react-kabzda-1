@@ -9,3 +9,7 @@
 .page {
     cursor: pointer;
 }
+.status {
+    font-size: 30px;
+    color: violet;
+}
