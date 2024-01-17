@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../button/Button';
 import s from './Users.module.css'
 import userImg from '../../assets/images/user.jpg';
@@ -10,9 +10,9 @@ const User = ({user, followInProgress, unfollow, follow}) => {
         <div>
           <span>
             <div className={s.img}>
-              <NavLink to={`/profile/${user.id}`}>
+              <Link to={`/profile/${user.id}`}>
               <img src={ user.photos.small != null ? user.photos.smal : userImg} alt="" />
-              </NavLink>
+              </Link>
              </div>
             <div>
             {user.followed 
@@ -20,14 +20,12 @@ const User = ({user, followInProgress, unfollow, follow}) => {
               <button disabled={followInProgress.some(id => id === user.id)}
                       onClick={() => {
                           unfollow(user.id)
-                      }}>
-                Unfollow</button>
+                      }}>Unfollow</button>
               : 
               <button disabled={followInProgress.some(id => id === user.id)}
               onClick={() => {
                   follow(user.id)
-              }}>
-        Follow</button>
+              }}>Follow</button>
              }
             </div>
           </span>
@@ -42,10 +40,14 @@ const User = ({user, followInProgress, unfollow, follow}) => {
             </span>
             <span>
             <div className={s.id}>
-                    { user.id}
+                    {user.id}
                 </div>
                 <div>
-                    {'user.country'}
+                {user.followed ? <span><Button addMessage={() => {
+                          unfollow(user.id)
+                      }}  value="true:unfollow"/></span> : <span><Button  addMessage={() => {
+                        follow(user.id)
+                    }} value="false:follow"/></span>}
                 </div>
             </span>
           </span>
