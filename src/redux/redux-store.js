@@ -6,6 +6,7 @@ import usersReducer from "./usersReducer";
 import{ thunk as thunkMidleware } from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import authReducer from "./authReducer";
+import { compose } from "redux";
 
 
 let reducers = combineReducers({
@@ -16,8 +17,9 @@ let reducers = combineReducers({
     app: appReducer,
     form: formReducer
 });//смешиваем редюсеры
-
-let store = legacy_createStore(reducers, applyMiddleware(thunkMidleware));//отдали редюсеры store, middleware(for thunk) 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = legacy_createStore(reducers,  composeEnhancers(applyMiddleware(thunkMidleware)));
+//отдали редюсеры store, middleware(for thunk) 
 
 window.store = store;
 

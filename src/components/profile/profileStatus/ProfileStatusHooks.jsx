@@ -20,7 +20,9 @@ const deactivateMode = () => {
     props.updateStatus(status)
 }
 const onStatusChange = (e) => {
+    //debugger;
     setStatus(e.currentTarget.value);
+    //props.updateStatus(status)
     //console.log(e.currentTarget.value)
    
     
