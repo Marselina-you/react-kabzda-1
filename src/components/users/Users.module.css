@@ -2,13 +2,8 @@
     width: 150px;
     border-radius: 100%;
 }
-.selectedPage {
-    font-weight: bold;
 
-}
-.page {
-    cursor: pointer;
-}
+
 .status {
     font-size: 30px;
     color: violet;

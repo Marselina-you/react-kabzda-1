@@ -74,29 +74,28 @@ export const setStatus = (status) => ({type: SET_STATUS, status})//action creato
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
 
-export const getStatus = (profileId) => (dispatch) => {
-    profileAPI.getStatus(profileId)
-    .then(response => {
+export const getStatus = (profileId) => async(dispatch) => {
+    let response = await  profileAPI.getStatus(profileId)
+    
         //debugger;
         dispatch(setStatus(response.data))
-    })
+    
 }  
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.getStatus(status)
-    .then(response => {
+export const updateStatus = (status) => async(dispatch) => {
+    let response = await  profileAPI.getStatus(status)
+   
         if (response.data.resultCode === 0) {
             dispatch(setStatus(response.data))//передаем в  dispatch экшен
         }
         
-    })
+    
 } 
-export const getProfileUsers = (profileId) => {//getUsersThunkCreator
-    return (dispatch) => {
-        profileAPI.getProfileUsers(profileId)
-        .then(response => {
+export const getProfileUsers = (profileId) => async(dispatch) =>{//getUsersThunkCreator
+   
+      let response = await  profileAPI.getProfileUsers(profileId)
+    
             dispatch(setUserProfile(response.data))
-        });
-    }
+       
 }
 
 export default profileReducer;

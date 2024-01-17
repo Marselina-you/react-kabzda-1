@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Img = () => {
+
+const ImgPhoto = () => {
     return (
         <div>
             
@@ -9,6 +9,6 @@ const Img = () => {
     );
 };
 
-Img.propTypes = {};
 
-export default Img;
+
+export default ImgPhoto;

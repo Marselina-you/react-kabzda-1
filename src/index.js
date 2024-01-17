@@ -6,6 +6,7 @@ import App from './App';
 //import  { addMessage, addPost, updateMessage, updateNewText } from './redux/state';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -15,9 +16,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
  
     
     root.render(
+      <BrowserRouter>
    <Provider store={store}>
  <App  />
    </Provider>
+     </BrowserRouter>
        
       
     );
