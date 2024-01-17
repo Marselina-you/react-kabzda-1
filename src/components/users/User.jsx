@@ -17,11 +17,17 @@ const User = ({user, followInProgress, unfollow, follow}) => {
             <div>
             {user.followed 
               ? 
-              <Button disabled={followInProgress.some(id => id === user.id)} addMessage={() => {
-               unfollow(user.id)}} value="unfollow"/>
+              <button disabled={followInProgress.some(id => id === user.id)}
+                      onClick={() => {
+                          unfollow(user.id)
+                      }}>
+                Unfollow</button>
               : 
-              <Button disabled={followInProgress.some(id => id === user.id)} addMessage={() => {
-                follow(user.id)}} value="follow"/>
+              <button disabled={followInProgress.some(id => id === user.id)}
+              onClick={() => {
+                  follow(user.id)
+              }}>
+        Follow</button>
              }
             </div>
           </span>
@@ -35,8 +41,8 @@ const User = ({user, followInProgress, unfollow, follow}) => {
                 </div>
             </span>
             <span>
-            <div>
-                    {'user.city'}
+            <div className={s.id}>
+                    { user.id}
                 </div>
                 <div>
                     {'user.country'}

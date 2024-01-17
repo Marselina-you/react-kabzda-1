@@ -33,7 +33,7 @@ let initialState = {
 ],
   
     profile: null,
-    status: "1"
+    status: null
 
 }
 
@@ -82,10 +82,10 @@ export const getStatus = (profileId) => async(dispatch) => {
     
 }  
 export const updateStatus = (status) => async(dispatch) => {
-    let response = await  profileAPI.getStatus(status)
+    let response = await  profileAPI.updateStatus(status)
    
-        if (response.data.resultCode === 0) {
-            dispatch(setStatus(response.data))//передаем в  dispatch экшен
+        if ( response.data.resultCode === 0) {
+            dispatch(setStatus(status))//передаем в  dispatch экшен
         }
         
     
