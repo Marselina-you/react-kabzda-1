@@ -7,10 +7,17 @@ import ProfileStatusWithHooks from '../profileStatus/ProfileStatusHooks';
 import ImgPhoto from '../../../assets/images/chef.jpg';
 
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
     if (!profile) {
         return <Preloader/>
 
+    }
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            
+            savePhoto(e.target.files[0]) 
+        }
     }
     return (
         <div>
@@ -19,9 +26,10 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
         </div>
         < ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
         <div className={classes.descriptionBlock}>
-        <img  src={ profile.photos.large != null ? profile.photos.smal : ImgPhoto}alt="user's_photo" />
+        <img  alt="userphoto"  src={profile.photos.large || ImgPhoto} />
+        { isOwner && <input type={"file"} onChange={ onMainPhotoSelected}/>}
         <div>{profile.fullName}</div>
-        <div>{profile.contacts.instagram}</div>
+       
         </div>  
         </div>
     );
