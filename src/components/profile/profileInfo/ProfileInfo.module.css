@@ -11,3 +11,6 @@
   .descriptionBlock img {
     width: 300px;
   }
+  .name {
+    color: blueviolet;
+  }

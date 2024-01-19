@@ -16,15 +16,12 @@ export const usersAPI = {
          return response.data;
        });
      },
-     //getProfileUsers(profileId) {
-      //  return profileAPI.getProfileUsers(profileId)
-       
-     //},
+   
      follow(userId) {
-        return instance.post(`follow/${userId}`)
+        return instance.post(`follow/${userId}`).then(res => res.data)
      },
      unfollow(userId) {
-        return instance.delete(`follow/${userId}`)
+        return instance.delete(`follow/${userId}`).then(res => res.data)
      }
    
 }
@@ -40,6 +37,7 @@ export const profileAPI = {
         //debugger;
         return instance.put(`profile/status`, {status: status});
      },
+     
      savePhoto(photoFile) {
       const formData = new FormData();
       formData.append("image", photoFile)

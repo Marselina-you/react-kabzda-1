@@ -11,21 +11,22 @@ const User = ({user, followInProgress, unfollow, follow}) => {
           <span>
             <div className={s.img}>
               <Link to={`/profile/${user.id}`}>
-              <img src={ user.photos.small != null ? user.photos.smal : userImg} alt="" />
+              <img src={ user.photos.small || userImg} alt="" />
               </Link>
              </div>
             <div>
             {user.followed 
               ? 
-              <button disabled={followInProgress.some(id => id === user.id)}
-                      onClick={() => {
-                          unfollow(user.id)
-                      }}>Unfollow</button>
+              <Button value="unfollow"  disabled={followInProgress.some(id => id === user.id)}
+              addMessage={() => {
+                unfollow(user.id)
+            }} />
+            
               : 
-              <button disabled={followInProgress.some(id => id === user.id)}
-              onClick={() => {
-                  follow(user.id)
-              }}>Follow</button>
+              <Button value="follow"  disabled={followInProgress.some(id => id === user.id)}
+              addMessage={() => {
+                follow(user.id)
+            }} />
              }
             </div>
           </span>
@@ -42,13 +43,7 @@ const User = ({user, followInProgress, unfollow, follow}) => {
             <div className={s.id}>
                     {user.id}
                 </div>
-                <div>
-                {user.followed ? <span><Button addMessage={() => {
-                          unfollow(user.id)
-                      }}  value="true:unfollow"/></span> : <span><Button  addMessage={() => {
-                        follow(user.id)
-                    }} value="false:follow"/></span>}
-                </div>
+               
             </span>
           </span>
         </div>

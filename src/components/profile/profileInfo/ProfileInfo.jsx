@@ -8,6 +8,7 @@ import ImgPhoto from '../../../assets/images/chef.jpg';
 
 
 
+
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
     if (!profile) {
         return <Preloader/>
@@ -29,6 +30,8 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
         <img  alt="userphoto"  src={profile.photos.large || ImgPhoto} />
         { isOwner && <input type={"file"} onChange={ onMainPhotoSelected}/>}
         <div>{profile.fullName}</div>
+        <div  className={classes.name}>vk:{profile.contacts.vk}</div>
+        <div  className={classes.name}>job:{profile.lookingForAJob}</div>
        
         </div>  
         </div>

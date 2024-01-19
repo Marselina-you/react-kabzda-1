@@ -4,12 +4,11 @@ import { useEffect } from 'react';
 
 const ProfileStatusWithHooks = (props) => {
 
-    let [editMode, setEditMode ] = useState(false);
+    let [editMode, setEditMode ] = useState(false);//useState инициализирует начальное состояние
     let [status, setStatus ] = useState(props.status);
 
     useEffect(() => {
-
-        setStatus(props.status);
+        setStatus(props.status);//позволяет синхронизировать компонент с внешней системой.
     }, [props.status] );
 
 const activateMode = () => {

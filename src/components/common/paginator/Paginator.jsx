@@ -22,14 +22,14 @@ let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     return (
         
        
-<div className={s.page}>
+<div className={s.paginator}>
         { portionNumber > 1 &&
         <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button> }
 
             {pages
                 .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
                 .map((p) => {
-                return <span className={ s.pageNumber }
+                return <span className={ (currentPage === p ? s.selectedPage : '') + ' ' + s.pageNumber}
                              key={p}
                              onClick={(e) => {
                                  onPageChanged(p);
