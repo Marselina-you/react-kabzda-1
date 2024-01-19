@@ -14,3 +14,10 @@
   .name {
     color: blueviolet;
   }
+  .contact {
+    padding-left: 20px;
+  }
+  .fullName {
+    font-weight: bold;
+    font-size: 30px;
+  }
