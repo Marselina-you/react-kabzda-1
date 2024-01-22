@@ -1,4 +1,4 @@
-import dialogsReducer from "./dialogsReducer";
+import dialogsReducer from "./dialogsReducer.ts";
 import profileReducer from "./profileReducer";
 //import sidebarReducer from "./sidebarReducer";
 

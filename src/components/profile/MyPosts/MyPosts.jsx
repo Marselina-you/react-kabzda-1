@@ -3,8 +3,7 @@ import Post from './post/Post';
 import classes from './MyPosts.module.css';
 import AddPostForm from './AddPostForm';
 import { reduxForm } from 'redux-form';
-//import { Component } from 'react';
-//import { PureComponent } from 'react';
+
 
 
 const MyPosts = React.memo(props => {

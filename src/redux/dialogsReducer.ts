@@ -1,4 +1,6 @@
+import { DialogsType, MessagesType } from "../components/types/types";
 const ADD_MESSAGE = 'ADD-MESSAGE';
+
 
 let initialState = {
     dialogs: [{
@@ -26,7 +28,7 @@ let initialState = {
     name: "Ahan",
     img: 'img.png'
 }
-],
+] as Array<DialogsType>,
 
 messages: [{
     id: 1,
@@ -37,7 +39,7 @@ messages: [{
     content: "hoy"
 },
 {
-    id: 3,
+    id: 3 as number | null,
     content: "huy"
 },
 {
@@ -48,12 +50,13 @@ messages: [{
     id: 5,
     content: "hoooyyyy"
 }
-],
+] as Array<MessagesType>
 
 
 
 }
-const dialogsReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
   
         switch(action.type) {
         case ADD_MESSAGE: {
@@ -77,6 +80,10 @@ const dialogsReducer = (state = initialState, action) => {
     
    
 }
-export const addMessageActionCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody})
+type addMessageActionCreatorType = {
+    type: typeof ADD_MESSAGE,
+    newMessageBody: string
+}
+export const addMessageActionCreator = (newMessageBody: string): addMessageActionCreatorType => ({type: ADD_MESSAGE, newMessageBody})
 
 export default dialogsReducer;

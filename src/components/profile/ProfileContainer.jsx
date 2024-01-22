@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { compose } from 'redux';
 
-import { getProfileUsers, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profileReducer';
+import { getProfileUsers, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profileReducer.ts';
 import Profile from './Profile';
 
 function withRouter(Component) {
