@@ -125,7 +125,7 @@ export const savePhoto = (file: File) => async (dispatch: any) =>{//getUsersThun
           dispatch(savePhotoSuccess(response.data.data.photos))
     }
 }
-export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState) =>{//getUsersThunkCreator
+export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) =>{//getUsersThunkCreator
     //debugger;
     const userId = getState().auth.userId;
      let response = await  profileAPI.saveProfile(profile)

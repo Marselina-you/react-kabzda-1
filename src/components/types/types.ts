@@ -36,7 +36,7 @@ export type MessagesType = {
     id: number,
     content: string | null
 }
-export type User = {
+export type UserType = {
     name: string | null,
     id: number,
     photos: PhotosType,

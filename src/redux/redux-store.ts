@@ -1,18 +1,14 @@
 import {  applyMiddleware, combineReducers, legacy_createStore } from "redux";
-
-
-import dialogsReducer from "./dialogsReducer.ts";
-import profileReducer from "./profileReducer.ts";
-import usersReducer from "./usersReducer.ts";
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import usersReducer from "./usersReducer";
 import{ thunk as thunkMidleware } from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
-import authReducer from "./authReducer.ts";
+import authReducer from "./authReducer";
 import { compose } from "redux";
-import appReducer from "./appReducer.ts";
+import appReducer from "./appReducer";
 
-
-
-let reducers = combineReducers({
+let rootReducers = combineReducers({
     profilePage: profileReducer,
     pageMessages: dialogsReducer,
     usersPage: usersReducer,
@@ -20,11 +16,14 @@ let reducers = combineReducers({
     app: appReducer,
     form: formReducer
 });//смешиваем редюсеры
+type RootReducersType = typeof rootReducers
+export type AppStateType = ReturnType<RootReducersType>
+//@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = legacy_createStore(reducers,  composeEnhancers(applyMiddleware(thunkMidleware)));
+const store = legacy_createStore(rootReducers,  composeEnhancers(applyMiddleware(thunkMidleware)));
 //отдали редюсеры store, middleware(for thunk) 
-
-window.store = store;
+//@ts-ignore
+window.__store__ = store;
 
 export default store;
 

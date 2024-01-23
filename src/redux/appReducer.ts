@@ -1,5 +1,7 @@
+import { getAuthUserData } from "./authReducer";
 
-import { getAuthUserData } from "./authReducer.ts";
+//import { getAuthUserData } from "./authReducer.ts";
+
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_INITIALEZED = 'SET_INITIALEZED';

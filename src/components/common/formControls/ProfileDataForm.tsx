@@ -3,7 +3,11 @@ import { reduxForm } from 'redux-form';
 import Button from '../../button/Button';
 import { CreateField, InputMy, Textarea } from './FormsControls';
 import s from '../../common/formControls/FormsControls.module.css'
+import { ProfileType } from '../../types/types';
 
+type PropsType = {
+    profile: ProfileType
+}
 
 const ProfileDataForm = ({handleSubmit, profile, error }) => {
     return (

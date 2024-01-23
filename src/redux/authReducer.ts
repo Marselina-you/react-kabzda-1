@@ -66,7 +66,7 @@ export const getAuthUserData = () => async(dispatch: any) =>{
           
     
 }
-export const login = (email: string, password: string, rememberMe: boolean, captcha ) => async(dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: any ) => async(dispatch: any) => {
  let response = await authAPI.login(email, password, rememberMe, captcha)
  if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData());
@@ -79,7 +79,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
                 dispatch(stopSubmit("login", {_error: message}))
             }
 }
-export const getCaptchaUrl = () => async(dispatch) => {
+export const getCaptchaUrl = () => async(dispatch: any) => {
     let response =  await securityAPI.getCaptchaUrl()
        const captchaUrl =  response.data.url;
        dispatch(getCaptchaUrlSuccess(captchaUrl));

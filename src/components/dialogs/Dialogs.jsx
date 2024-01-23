@@ -1,6 +1,6 @@
 import React from "react";
 import Dialog from "./dialog/Dialog";
-import Message from "./message/Message";
+import Message from "./message/Message.tsx";
 import classes from "./Dialogs.module.css";
 
 import AddMessageForm from "./AddMessageForm";

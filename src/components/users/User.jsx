@@ -4,6 +4,10 @@ import Button from '../button/Button';
 import s from './Users.module.css'
 import userImg from '../../assets/images/user.jpg';
 
+type PropsType = {
+  
+}
+
 const User = ({user, followInProgress, unfollow, follow}) => {
     
     return (
