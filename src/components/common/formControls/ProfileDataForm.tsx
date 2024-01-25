@@ -1,15 +1,17 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
+import { InjectedFormProps, reduxForm } from 'redux-form';
 import Button from '../../button/Button';
-import { CreateField, InputMy, Textarea } from './FormsControls';
+import { CreateField, InputMy, GetStringKeys, Textarea } from './FormsControls';
 import s from '../../common/formControls/FormsControls.module.css'
 import { ProfileType } from '../../types/types';
 
 type PropsType = {
     profile: ProfileType
+    
 }
+type ProfileTypeKeys = GetStringKeys<ProfileType>
 
-const ProfileDataForm = ({handleSubmit, profile, error }) => {
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({handleSubmit, profile, error }) => {
     return (
         <form onSubmit={handleSubmit}>
             <Button value='save'/>
@@ -19,7 +21,7 @@ const ProfileDataForm = ({handleSubmit, profile, error }) => {
         } 
           
             <div>
-                {CreateField('full name', 'fullName', null, InputMy) }</div>
+                {CreateField<ProfileTypeKeys>('full name', 'fullName', [], InputMy) }</div>
 
         <div><b>job: </b>{CreateField('', "lookingForAJob", [], InputMy, {type: "checkbox"})}</div>
         <div>My professional skills:
@@ -43,7 +45,7 @@ const ProfileDataForm = ({handleSubmit, profile, error }) => {
     );
 };
 
-const ProfileDataFormRedux = reduxForm({
+const ProfileDataFormRedux = reduxForm<ProfileType, PropsType>({
     form: 'edit-profile'
 })(ProfileDataForm)
 

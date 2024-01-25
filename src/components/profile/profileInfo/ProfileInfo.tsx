@@ -9,7 +9,7 @@ import { useState, ChangeEvent } from 'react';
 import Button from '../../button/Button';
 
 import ProfileDataFormRedux from '../../common/formControls/ProfileDataForm';
-import { ProfileType } from '../../types/types';
+import { ProfileType, ContactsType } from '../../types/types';
 
 type PropsType = {
     profile: ProfileType | null
@@ -28,7 +28,7 @@ const ProfileInfo: React.FC<PropsType> = ({profile, status, updateStatus, isOwne
     }
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files.length) {
+        if (e.target.files) {
             
             savePhoto(e.target.files[0]) 
         }
@@ -78,7 +78,8 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, goToEdit
         Object
         .keys(profile.contacts)
         .map(key => {
-             return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+             return <Contact key={key} contactTitle={key} 
+             contactValue={profile.contacts[key as keyof ContactsType]}/>
         })}
        </div>
        
