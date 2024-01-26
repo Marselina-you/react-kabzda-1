@@ -5,20 +5,7 @@ export const getUsers = (state: AppStateType) => {
     return state.usersPage.users;
 
 }
-// const getUsersSelector = (state: AppStateType) => {
-//     return state.usersPage.users;
-// }
 
-// export const getUsers = createSelectorHook(getUsersSelector,
-//     (users) => {
-//     return users.filter(u => true);
-// })
-// export const getJustSuper = (state: AppStateType) => {
-//     return state.usersPage.users;
-// }
-// export const getSuper = createSelectorHook(getJustSuper, (users) => {
-//       return  users().filter(u => true)
-// })
 export const getPageSize = (state: AppStateType) => {
     return state.usersPage.pageSize;
 
