@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import LoginPage from '../components/login/Login';
+import { LoginPage } from '../components/login/Login';
+
+
 import Music from '../components/music/Music';
 import News from '../components/news/News';
 //import ProfileContainer from '../components/profile/ProfileContainer';

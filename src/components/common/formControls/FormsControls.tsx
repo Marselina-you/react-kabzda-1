@@ -6,15 +6,17 @@ import {FieldValidatorType} from "../../../utils/validators/validators"
 
 type FormsControlPropsType = {
     meta: WrappedFieldMetaProps
+    children?: React.ReactNode
     
 }
+//type FormsControlType = (params: FormsControlPropsType) => React.ReactNode
 
-const FormsControl: React.FC<FormsControlPropsType> = ({ meta: {touched, error}, child}) => {
+const FormsControl: React.FC<FormsControlPropsType> = ({ meta: {touched, error}, children}) => {
     const hasError = touched &&  error;  
     return (
         <div className={s.formControl + " " + (hasError ? s.error : "")  } >
             <div className={s.inputMy}>
-            {child}
+            {children}
             </div>
 
        {hasError && <span>{error}</span>}    
@@ -31,12 +33,13 @@ export const InputMy: React.FC<WrappedFieldProps> = (props) => {
       return <FormsControl {...props} ><input {...input} {...restProps}/></FormsControl>
 }
   
-export function CreateField<FormKeysType extends string>(placeholder: string | undefined,
+export function CreateField<FormKeysType extends string>(
+    placeholder: string | undefined,
     name: FormKeysType,
     validators: Array<FieldValidatorType>,
-    
     component: React.FC<WrappedFieldProps>,
-    props = {}, text = "") {
+    props = {},
+    text = "") {
 return <div>
 <Field placeholder={placeholder} name={name}
 validate={validators}
@@ -45,4 +48,4 @@ component={component}
 /> {text}
 </div>
 }
-export type GetStringKeys<T> = Extract<keyof T, string>
+export type GetStringKeys<T> = Extract<keyof T, string>//keyof Дай ключи от Т
