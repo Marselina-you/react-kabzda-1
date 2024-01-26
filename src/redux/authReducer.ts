@@ -1,10 +1,9 @@
+import { ResultCodeForCapcthaEnum, ResultCodesEnum } from "../api/api";
 import { stopSubmit } from "redux-form";
-import { authAPI, ResultCodeForCaptcha, ResultCodesEnum, securityAPI } from "../api/api";
+import { authAPI } from "../api/auth-api";
+import {securityAPI} from '../api/security-api';
 import {BaseThunkType, InferActionsTypes} from './redux-store';
 import {FormAction} from 'redux-form/lib/actions';
-
-const SET_USER_DATA = 'samuray/auth/SET_USER_DATA';
-const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS';
 
 let initialState = {
     userId: null as number | null,
@@ -17,8 +16,8 @@ let initialState = {
 const authReducer = (state = initialState, action: any): InitialStateType => {
 
     switch(action.type) {
-        case SET_USER_DATA:
-        case GET_CAPTCHA_URL_SUCCESS: 
+        case 'samuray/auth/SET_USER_DATA':
+        case 'GET_CAPTCHA_URL_SUCCESS': 
         return {
             
             ...state, 
@@ -30,15 +29,12 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 export const actions = {
-    setAuthUserData: (userId: number | null, email: string | null, login: string | null, isAuth: boolean | false) => ({type: SET_USER_DATA, payload: {
+    setAuthUserData: (userId: number | null, email: string | null, login: string | null, isAuth: boolean | false) => ({type: 'samuray/auth/SET_USER_DATA', payload: {
         userId, email, login, isAuth}} as const),
-    getCaptchaUrlSuccess: (captchaUrl: string) => ({type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}
+    getCaptchaUrlSuccess: (captchaUrl: string) => ({type: 'GET_CAPTCHA_URL_SUCCESS', payload: {captchaUrl}
     })
 }
-
-
 //thunk
-
 export const getAuthUserData = (): ThunkType => async(dispatch) =>{
     let meData =  await authAPI.me();
       if (meData.resultCode === ResultCodesEnum.Success) {
@@ -52,7 +48,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
                 dispatch(getAuthUserData());
             }
             else {
-                if (loginData.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) { 
+                if (loginData.resultCode === ResultCodeForCapcthaEnum.CaptchaIsRequired) { 
                     dispatch(getCaptchaUrl())
                 }
                 let message = loginData.messages.length > 0 ? loginData.messages[0] : "some errror"

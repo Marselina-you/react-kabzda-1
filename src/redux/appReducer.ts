@@ -1,11 +1,4 @@
 import { getAuthUserData } from "./authReducer";
-
-//import { getAuthUserData } from "./authReducer.ts";
-
-
-const SET_USER_DATA = 'SET_USER_DATA';
-const SET_INITIALEZED = 'SET_INITIALEZED';
-
 export type InitialStateType = {
     initialized: boolean
 }
@@ -16,14 +9,14 @@ let initialState: InitialStateType = {
 const appReducer = (state = initialState, action: any) : InitialStateType=> {
 
     switch(action.type) {
-        case SET_USER_DATA:
+        case 'SET_USER_DATA':
            
             return {
                 ...state, 
                 ...action.payload,
                 
             }
-            case SET_INITIALEZED:
+            case 'SET_INITIALEZED':
            
                 return {
                     ...state, 
@@ -34,18 +27,17 @@ const appReducer = (state = initialState, action: any) : InitialStateType=> {
             return state;     
     }
 }
-export type InitializedSuccessActionType = {
-    type: typeof SET_INITIALEZED
+export const actions = {
+    initializeSuccess: ()  => ({type: 'SET_INITIALEZED'}as const)
 }
 
-export const initializeSuccess = () : InitializedSuccessActionType => ({type: SET_INITIALEZED})
 //thunk
 
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(getAuthUserData());
 
     Promise.all([promise]).then(() => {
-        dispatch(initializeSuccess())
+        dispatch(actions.initializeSuccess())
     })
 
     
