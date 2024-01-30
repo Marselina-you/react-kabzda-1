@@ -1,4 +1,3 @@
-import { createSelectorHook } from "react-redux";
 import { AppStateType } from "./redux-store";
 
 export const getUsers = (state: AppStateType) => {
@@ -23,6 +22,6 @@ export const getIsFetching = (state: AppStateType) => {
 
 }
 export const getFollowInProgress = (state: AppStateType) => {
-    return state.usersPage.followInProgress;
+    return state.usersPage.followingInProgress;
 
 }

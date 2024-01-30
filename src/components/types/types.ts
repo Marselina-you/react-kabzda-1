@@ -28,19 +28,20 @@ export type ProfileType = {
 }
 export type DialogsType = {
     id:number,
-    name: string | null,
-    img: string | null
+    name: string,
+    
     
 }
 export type MessagesType = {
     id: number,
-    content: string | null
+    content: string
 }
 export type UserType = {
-    name: string | null,
+    
     id: number,
+    name: string,
     photos: PhotosType,
-    status: string | null,
+    status: string,
     followed: boolean
 }
 

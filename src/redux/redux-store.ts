@@ -12,7 +12,7 @@ import appReducer from "./appReducer";
 
 let rootReducers = combineReducers({
     profilePage: profileReducer,
-    pageMessages: dialogsReducer,
+    dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     auth: authReducer,
     app: appReducer,
@@ -22,6 +22,7 @@ type RootReducersType = typeof rootReducers
 export type AppStateType = ReturnType<RootReducersType>
 
 export type InferActionsTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
+
 export type BaseThunkType<A extends Action = Action, R = Promise<void>> = ThunkAction<R, AppStateType, unknown, A>
 //@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

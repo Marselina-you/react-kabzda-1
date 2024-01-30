@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './Nav.module.css';
 
 
-const Nav = () => {
+const Nav: React.FC = () => {
     return (
         <nav className={classes.nav}>
         <div className={classes.item}>

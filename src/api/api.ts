@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ProfileType, UserType } from "../components/types/types";
+import { UserType } from "../components/types/types";
 export enum ResultCodesEnum {
    Success = 0,
    Error = 1,

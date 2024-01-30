@@ -13,7 +13,7 @@ type MapStatePropsType = {
     isFetching: boolean
     totalUsersCount: number
     users: Array<UserType>
-    followInProgress: Array<number>
+    followingInProgress: Array<number>
 }
   type OwnPropsType = {
     pageTitle: string
@@ -59,7 +59,7 @@ class UsersContainer extends React.Component<PropsType> {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
-          followInProgress={this.props.followInProgress}
+          followingInProgress={this.props.followingInProgress}
           /> 
           </>
         
@@ -76,7 +76,7 @@ let mapStateToProps = (state: AppStateType) : MapStatePropsType => {
     totalUsersCount: getUsersTotalCount(state),
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
-    followInProgress: getFollowInProgress(state),
+    followingInProgress: getFollowInProgress(state),
     
 }
 }

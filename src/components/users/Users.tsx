@@ -12,11 +12,11 @@ type PropsType = {
   users: Array<UserType>   
   follow: (userId: number) => void 
   unfollow: (userId: number) => void   
-  followInProgress: Array<number>
+  followingInProgress: Array<number>
 }
 
 
-const Users: React.FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, follow, unfollow, followInProgress,   ...props}) => {
+const Users: React.FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, follow, unfollow, followingInProgress,   ...props}) => {
    
     return (
         <div>
@@ -27,7 +27,7 @@ const Users: React.FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount
       
       {users.map((u) => (
         <User user={u} key={u.id}
-              followInProgress={followInProgress}
+              followingInProgress={followingInProgress}
               unfollow={unfollow} 
               follow={follow} 
               />

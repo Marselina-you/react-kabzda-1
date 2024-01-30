@@ -1,11 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import image from '../../../images/img.png';
+
 import classes from './Dialog.module.css'
 
 
+type PropsType = {
+    id: number
+    name: string
+}
 
-const Dialog = (props) => {
+const DialogItem: React.FC<PropsType> = (props) => {
     let path = "/dialogs/" + props.id;
     return (
         <div className={`${classes.dialog} ${classes.active}`}>
@@ -19,4 +24,4 @@ const Dialog = (props) => {
 
 
 
-export default Dialog;
+export default DialogItem;

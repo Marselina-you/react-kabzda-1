@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const image = () => {
+const imageComp = () => {
     return (
         <div>
             <img src="./img.png" alt="" />
@@ -11,4 +11,4 @@ const image = () => {
 
 
 
-export default image;
+export default imageComp;
