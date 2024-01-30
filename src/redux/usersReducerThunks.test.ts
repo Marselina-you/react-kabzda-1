@@ -16,7 +16,7 @@ beforeEach(() => {
 })
 
 
-const result: APIResponseType = {
+const APIResponse: APIResponseType = {
     data: {},
     messages: [],
     resultCode: ResultCodesEnum.Success,
@@ -24,14 +24,15 @@ const result: APIResponseType = {
    
 }
 
-userAPIMock.follow.mockReturnValue(Promise.resolve(result));
-userAPIMock.unfollow.mockReturnValue(Promise.resolve(result));
+
 
 
 
 
 test('success follow thunk', async () => {
     const thunk = follow(1)
+//@ts-ignore
+userAPIMock.follow.mockReturnValue(Promise.resolve(APIResponse));
 
     await thunk(dispatchMock, getStateMock, {})
 
@@ -43,7 +44,9 @@ test('success follow thunk', async () => {
 
 test('success unfollow thunk', async () => {
     const thunk = unfollow(1)
+//@ts-ignore
 
+userAPIMock.unfollow.mockReturnValue(Promise.resolve(APIResponse));
     await thunk(dispatchMock, getStateMock, {})
 
     expect(dispatchMock).toBeCalledTimes(3)
