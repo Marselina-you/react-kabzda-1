@@ -1,6 +1,8 @@
+import clsx from 'clsx';
 import React from 'react';
 import { useState } from 'react';
 import s from './Paginator.module.css';
+import cn from 'classnames'
 
 type PropsType = {
   totalItemsCount: number
@@ -9,7 +11,11 @@ type PropsType = {
   onPageChanged: (pageNumber: number) => void
   portionSize?: number
 }
-const Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+const Paginator: React.FC<PropsType> = ({totalItemsCount, 
+  pageSize, 
+  currentPage =1 , 
+  onPageChanged = x => x, 
+  portionSize = 10}) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize );
   
   let pages: Array<number> = [];
@@ -18,7 +24,7 @@ const Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage,
   }
   
   let portionCount = Math.ceil(pagesCount / portionSize);
-  let [portionNumber, setPortionNumber] = useState<number>(1);
+  let [portionNumber, setPortionNumber] = useState(1);
  
 let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
   let rightPortionPageNumber = portionNumber * portionSize;
@@ -27,18 +33,30 @@ let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     return (
         
        
-<div className={s.paginator}>
+<div className={cn(s.paginator)}>
         { portionNumber > 1 &&
         <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button> }
 
-            {pages
-                .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
-                .map((p) => {
-                return <span className={ (currentPage === p ? s.selectedPage : '') + ' ' + s.pageNumber}
-                             key={p}
-                             onClick={(e) => {
-                                 onPageChanged(p);
-                             }}>{p}</span>
+{pages
+            .filter(pageF => {
+               return pageF >= leftPortionPageNumber
+                  && pageF <= rightPortionPageNumber
+            })
+            .map(page => {
+
+               return (
+                  <span
+                     className={cn(
+                        s.pageNumber,
+                        {[s.selectedPage]: currentPage == page})
+                     }
+                     key={page}
+                     onClick={() => {
+                        onPageChanged(page);
+                     }}>
+            {page}
+            </span>)
+
             })}
         { portionCount > portionNumber &&
             <button onClick={() => { setPortionNumber(portionNumber + 1) }}>NEXT</button> }
@@ -51,3 +69,6 @@ let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
 
 
 export default Paginator;
+ //  { clsx({
+                //   [s.selectedPage]: currentPage === p}, s.pageNumber) }
+                //{ (currentPage === p ? s.selectedPage : '') + ' ' + s.pageNumber}

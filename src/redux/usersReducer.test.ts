@@ -23,6 +23,10 @@ beforeEach(() => {
         pageSize: 10,
         totalUsersCount: 0,
         currentPage: 1,
+        filter: {
+            term: '',
+            friend: null
+        },
         isFetching: false,
         followingInProgress: []
     }

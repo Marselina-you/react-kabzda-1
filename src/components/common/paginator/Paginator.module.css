@@ -9,5 +9,5 @@
 
 .pageNumber.selectedPage {
     font-weight: bold;
-    border-color: black;
+    border-color: red;
 }

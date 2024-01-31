@@ -21,7 +21,6 @@ const APIResponse: APIResponseType = {
     messages: [],
     resultCode: ResultCodesEnum.Success,
    
-   
 }
 
 
