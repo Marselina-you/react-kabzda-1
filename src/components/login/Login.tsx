@@ -1,15 +1,11 @@
 import React from 'react';
-
 import { reduxForm, InjectedFormProps } from 'redux-form';
 import { InputMy, CreateField, GetStringKeys } from "../common/formControls/FormsControls"
-
 import { login } from '../../redux/authReducer';
 import { Navigate } from "react-router-dom";
 import { AppStateType } from '../../redux/redux-store';
-
 import { required } from "../../utils/validators/validators"
 import Button from "../button/Button"
-
 import s from './../common/formControls/FormsControls.module.css'
 import {useDispatch, useSelector} from 'react-redux'
 

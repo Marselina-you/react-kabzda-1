@@ -5,9 +5,10 @@ import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import   { thunk as thunkMiddleware } from 'redux-thunk';
 
-import {ThunkAction} from "redux-thunk";
+import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import { reducer as formReducer } from 'redux-form';
 import appReducer from "./appReducer";
+import { useDispatch } from "react-redux";
 
 
 let rootReducers = combineReducers({
@@ -27,6 +28,10 @@ export type BaseThunkType<A extends Action = Action, R = Promise<void>> = ThunkA
 //@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = legacy_createStore(rootReducers,  composeEnhancers(applyMiddleware(thunkMiddleware)));
+//export type AppDispatch = ThunkDispatch<AppStateType, unknown, AnyAction>
+ export const useTypedDispatch = () => useDispatch<TypeDispatch>()
+
+ export type TypeDispatch = ThunkDispatch<AppStateType, any, Action>
 //отдали редюсеры store, middleware(for thunk) 
 //@ts-ignore
 window.__store__ = store;
