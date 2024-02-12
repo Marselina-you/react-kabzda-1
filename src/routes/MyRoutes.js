@@ -1,3 +1,4 @@
+import { Content } from 'antd/es/layout/layout';
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Preloader from '../components/common/preloader/Preloader';
@@ -17,6 +18,7 @@ const UsersPage = React.lazy(
 
 const MyRoutes = () => {
     return (
+     
       <Suspense fallback={<div><Preloader/></div>}>
        <Routes>
         <Route exact path={ROUTES.DIALOGS} element={<DialogsContainer />} />
@@ -30,6 +32,7 @@ const MyRoutes = () => {
       <Route path={ROUTES.HOME} element={<ProfileContainer />}/>
        </Routes>
        </Suspense>
+     
     );
 };
 

@@ -61,7 +61,7 @@ export const getCaptchaUrl = (): ThunkType => async(dispatch) => {
        dispatch(actions.getCaptchaUrlSuccess(captchaUrl));
              
 }
-export const logout = () => async(dispatch: any) => {
+export const logout = (): ThunkType => async(dispatch: any) => {
     let response =  await authAPI.logout()
         
              if (response.data.resultCode === 0) {
